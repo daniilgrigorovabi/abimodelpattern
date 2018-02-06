@@ -1,0 +1,10 @@
+<name value="date">
+    <length value="" />
+    <ai value="false" />
+    <require value="false" />
+    <type value="string" />
+    <pattern value="/^[1-9][0-9][0-9][0-9]-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/" />
+    <unique value="false" />
+    <default value="" />
+    <bind_db value="false" />
+</name>

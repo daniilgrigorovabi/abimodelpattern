@@ -1,0 +1,10 @@
+<name value="varchar">
+    <length value="21844" />
+    <ai value="false" />
+    <require value="false" />
+    <type value="string" />
+    <pattern value="" />
+    <unique value="false" />
+    <default value="" />
+    <bind_db value="false" />
+</name>

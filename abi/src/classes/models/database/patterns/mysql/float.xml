@@ -1,0 +1,10 @@
+<name value="float">
+    <length value="24" />
+    <ai value="false" />
+    <require value="false" />
+    <type value="double" />
+    <pattern value="" />
+    <unique value="false" />
+    <default value="" />
+    <bind_db value="false" />
+</name>
