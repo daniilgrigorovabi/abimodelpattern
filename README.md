@@ -27,10 +27,10 @@ $entity = \ABI\classes\Entity::getEntity($body, 'MODEL_NAME');
 ### Example
 
 Model "ATM"
-![abi_model_pattern_atm](https://i.imgur.com/zl8jWvG.png)
+![abi_model_pattern_atm](https://i.imgur.com/gHgf77z.png)
 
 Model "ATMdevice"
-![abi_model_pattern_atm_device](https://i.imgur.com/d0TOeUJ.png)
+![abi_model_pattern_atm_device](https://i.imgur.com/Oc94sXF.png)
 
 ```php
 try {
