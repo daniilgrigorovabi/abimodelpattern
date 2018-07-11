@@ -10,13 +10,17 @@
             "role": "Developer"
         }
     ],
-    "require":{
-        "php":">=5.3.0"
+    "require": {
+        "php": ">=5.3.0",
+        "firebase/php-jwt": "*"
     },
-    "autoload":{
-        "psr-4":{
+    "autoload": {
+        "psr-4": {
             "ABI\\":"src/abi",
 	        "ABI\\classes\\":"src/classes"
-        }
+        },
+        "files": [
+            "functions.php"
+        ]
     }
 }

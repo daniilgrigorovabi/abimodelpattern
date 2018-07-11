@@ -1,0 +1,11 @@
+<?php
+/**
+ * Author: Daniil Hryhorov
+ * Email: daniil.grigorov.kh@gmail.com
+ */
+
+namespace ABI\classes\models\custom\entities;
+
+use ABI\classes\models\FinalModel;
+
+class {Entity_Standard_Name} extends FinalModel { }

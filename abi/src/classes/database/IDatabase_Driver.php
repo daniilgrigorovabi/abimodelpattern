@@ -1,13 +1,13 @@
 <?php
 /**
- * Author: Daniil Grigorov
+ * Author: Daniil Hryhorov
  * Email: daniil.grigorov.kh@gmail.com
  */
 
 namespace ABI\classes\database;
 
-interface IDatabase_Driver {
-
+interface IDatabase_Driver
+{
 	public function getLastError();
 
     public function createMPDatabase($db_name);
@@ -25,5 +25,4 @@ interface IDatabase_Driver {
 	public function importMPData($model_names);
 
 	public function setConnection($db);
-
 }

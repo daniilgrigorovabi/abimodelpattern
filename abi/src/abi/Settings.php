@@ -1,6 +1,6 @@
 <?php
 /**
- * Author: Daniil Grigorov
+ * Author: Daniil Hryhorov
  * Email: daniil.grigorov.kh@gmail.com
  */
 
@@ -8,46 +8,58 @@ namespace ABI;
 
 use ABI\classes\Parser;
 
-class Settings {
+class Settings
+{
 	private static $instance = null;
 	private static $settings = null;
 
-	private function __clone() {}
-	private function __construct() {}
+	private function __clone() { }
+	private function __construct() { }
 
-    private static function _setSettings($filePath) {
-        if(!self::$settings = parse_ini_file($filePath)) {
+    private static function setSettings($filePath)
+    {
+        if (!self::$settings = parse_ini_file($filePath)) {
 			http_response_code (503);
-            exit(json_encode(array('message' => "Opening the '$filePath' file for writing or reading failed")));
+            ob_end_clean();
+            exit(json_encode(array ('message' => "Opening the '$filePath' file for writing or reading failed")));
         }
 		chmod($filePath, 0777);
     }
 
-	public static function getInstance() {
+    private static function setTimezone()
+    {
+        date_default_timezone_set('UTC');
+    }
+
+	public static function getInstance()
+    {
 		if (null === self::$instance) {
 		    $path_arr = explode(DIRECTORY_SEPARATOR, __DIR__);
             array_splice($path_arr, count($path_arr)-2);
             $path = implode(DIRECTORY_SEPARATOR, $path_arr);
 
-			self::_setSettings($path.DIRECTORY_SEPARATOR.'conf'.DIRECTORY_SEPARATOR.'abi.ini');
+            self::setTimezone();
+			self::setSettings($path . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'abi.ini');
 			self::$instance = new self();
 		}
 		return self::$instance;
 	}
 
-	public static function getParam($param) {
-    	if(!array_key_exists($param, self::$settings)) {
-			EventHandler::error("The configuration parameter '$param' was not found in the ".__FILE__);
+	public static function getParam($param)
+    {
+    	if (!array_key_exists($param, self::$settings)) {
+			EventHandler::error("The configuration parameter '$param' was not found in the " . __FILE__);
 		}
 
 		return self::$settings[$param];
 	}
 
-	public static function update($section, $new_fields_arr) {
+	public static function update($section, $new_fields_arr)
+    {
 		$config_data = parse_ini_file(Parser::getPath('config_rf'), true);
 
 		foreach ($new_fields_arr as $param_name => $param_value) {
-			if(array_key_exists($param_name, $config_data[$section])) {
+			if (array_key_exists($param_name, $config_data[$section])) {
 				$config_data[$section][$param_name] = $param_value;
 			}
 		}
@@ -66,8 +78,8 @@ class Settings {
 
 		chmod(Parser::getPath('config_rf'), 0777);
 
-		if(!file_put_contents(Parser::getPath('config_rf'), $new_content)) {
-			EventHandler::error('Cannot update the parameters of settings');
+		if (!file_put_contents(Parser::getPath('config_rf'), $new_content)) {
+			EventHandler::error('Cannot update the parameters of settings. Config file access permissions may be insufficient');
 		}
 	}
 }
