@@ -26,10 +26,12 @@ $entity = \ABI\classes\Entity::getEntity($body, 'MODEL_NAME');
 
 ### Example
 
-Model "ATM"
+Model "atm"
+
 ![abi_model_pattern_atm](https://i.imgur.com/gHgf77z.png)
 
-Model "ATMdevice"
+Model "atmdevice"
+
 ![abi_model_pattern_atm_device](https://i.imgur.com/Oc94sXF.png)
 
 ```php
